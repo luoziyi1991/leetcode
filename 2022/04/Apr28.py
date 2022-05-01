@@ -27,3 +27,27 @@ def sorted_list_squares(nums):
             right -= 1
         cur -= 1
     return res
+
+
+# 轮转数组
+"""
+给你一个数组，将数组中的元素向右轮转 k 个位置，其中 k 是非负数。
+输入: nums = [1,2,3,4,5,6,7], k = 3
+输出: [5,6,7,1,2,3,4]
+"""
+
+
+def rotate_arr(nums, k):
+    k %= len(nums)
+
+    def reverse(x, l, r):
+        while l <= r:
+            x[l], x[r] = x[r], x[l]
+            l += 1
+            r -= 1
+        return x
+
+    reverse(nums, 0, len(nums) - 1)
+    reverse(nums, 0, k - 1)
+    reverse(nums, k, len(nums) - 1)
+    return nums
